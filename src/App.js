@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, React } from "react";
+
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function App() {
+  const [count, setcount] = useState(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="Head">Clicker</div>
+      <div className="Butt">
+        <button
+          style={{
+            borderRadius: "100%",
+            width: "100px",
+            height: "100px",
+          }}
+          onClick={() => setcount(count + 1)}
         >
-          Learn React
-        </a>
-      </header>
+          <AddIcon style={{ color: "white" }} />
+        </button>
+        <button
+          disabled={count === 0}
+          style={{
+            borderRadius: "100%",
+            width: "100px",
+            height: "100px",
+          }}
+          onClick={() => setcount(count - 1)}
+        >
+          <RemoveIcon style={{ color: "white" }} />
+        </button>
+      </div>
+      <div className="Count">{count}</div>
     </div>
   );
 }
